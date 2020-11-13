@@ -47,25 +47,29 @@ hourEls.forEach(colorCoded);
      
 
 //WHEN I click the save button for that time block
-var saveButton = $(".saveBtn");
-saveButton.on("click", saveValue);
+$(".saveBtn").each(function(){
+    $(this).on("click", saveValue)
+});
 
 
-function saveValue(e){
-    var textEntry = $(".form-control").text;  
-    localStorage.setItem("id", textEntry); 
+
+function saveValue(){
+    $(".form-control").each(function(){
+        localStorage.setItem($(this).attr("value"), $(this).val());
+        
+    });
 }
 
 //WHEN I refresh the page
 //THEN the saved events persist
-//get the saved value function - return the value of "v" from localStorage. 
-function getSavedValue  (v) {
-    if (!localStorage.getItem(v)) {
-        return "";// You can change this to your defualt value. 
-    }
-    return localStorage.getItem(v);
+
+function loadValues(){
+    $(".form-control").each(function(){
+        var savedValues = localStorage.getItem($(this).attr("value"));
+        $(this).val(savedValues);
+    })
 }
-getSavedValue();
+loadValues();
 
 })
 
