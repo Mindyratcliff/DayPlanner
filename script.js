@@ -28,10 +28,13 @@ function colorCoded (){
     for (var i = 0; i < intHourEls.length; i++){
     if (currentHour > intHourEls[i]){
         $("div[value='"+ intHourEls[i] +"']").addClass("past");
+        $(".form-control[value='"+ intHourEls[i] +"']").addClass("past");
     } else if (currentHour === intHourEls[i]){
         $("div[value='"+ intHourEls[i] +"']").addClass("present");
+        $(".form-control[value='"+ intHourEls[i] +"']").addClass("present");
     } else {
         $("div[value='"+ intHourEls[i] +"']").addClass("future");
+        $(".form-control[value='"+ intHourEls[i] +"']").addClass("future");
     }
 }
 }
